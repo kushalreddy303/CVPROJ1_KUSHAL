@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annotated Bibliography - CV for Elderly Care</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-eye-fill"></i> CV for Elderly Care
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border-color: #000;">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="introduction.html">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sensors.html">Sensors & Vision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="activity-recognition.html">Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="algorithms.html">Algorithms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fall-detection.html">Fall Detection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="challenges.html">Challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="datasets.html">Datasets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="bibliography.html">Bibliography</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Audio Player and Reading Time -->
+    <div class="page-controls">
+        <button id="audioPlayerBtn" class="audio-player-btn" aria-label="Play audio narration">
+            <i id="playIcon" class="bi bi-play-fill"></i>
+            <i id="pauseIcon" class="bi bi-pause-fill" style="display: none;"></i>
+            <span>Listen</span>
+        </button>
+        <div class="read-time-badge" aria-label="Estimated reading time">
+            <i class="bi bi-clock-fill"></i>
+            <span>3 min read</span>
+        </div>
+    </div>
+    <audio id="pageAudio" class="page-audio" preload="metadata">
+        <source src="audio/bibliography.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Main Content -->
+    <main class="content-section">
+        <!-- Page Title -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h1 class="display-4 fw-bold mb-3">Annotated Bibliography</h1>
+                        <p class="lead text-muted">
+                            Key research papers and resources cited throughout this tutorial.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bibliography Entries -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        
+                        <!-- Reference [1] -->
+                        <div class="reference-card" id="gaikwad2023">
+                            <div class="reference-number">[1]</div>
+                            <div class="reference-content">
+                                <p class="reference-citation">
+                                    Sudhir Gaikwad, Shripad Bhatlawande, Swati Shilaskar, and Anjali Solanke. 2023. A computer vision-approach for activity recognition and residential monitoring of elderly people. <em>Medicine in Novel Technology and Devices</em>, 20 (2023), 100272. Elsevier. 
+                                    <a href="https://doi.org/10.1016/j.medntd.2023.100272" target="_blank" class="doi-link">
+                                        <i class="bi bi-link-45deg"></i> https://doi.org/10.1016/j.medntd.2023.100272
+                                    </a>
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Synopsis:</em> Proposes a vision-based elderly monitoring system using BlazePose landmarks to detect sitting, standing, walking, lying, and falling. Evaluates multiple ML models (SVM, RF, DT, Ensemble) with high accuracy (~99%).
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Reliability:</em> Published in an Elsevier journal, peer-reviewed, strong experimental validation with real participants.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Reference [2] -->
+                        <div class="reference-card" id="gaya2023">
+                            <div class="reference-number">[2]</div>
+                            <div class="reference-content">
+                                <p class="reference-citation">
+                                    F. Xavier Gaya-Morey, Cristina Manresa-Yee, and Jose M. Buades-Rubio. 2023. Explainable activity recognition for the elderly. In <em>Proceedings of the XXIII International Conference on Human Computer Interaction (Interacción '23)</em>. ACM, New York, NY, USA, 8 pages. 
+                                    <a href="https://doi.org/10.1145/3612783.3612790" target="_blank" class="doi-link">
+                                        <i class="bi bi-link-45deg"></i> https://doi.org/10.1145/3612783.3612790
+                                    </a>
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Synopsis:</em> Uses Explainable AI (LIME) to make deep learning–based activity recognition transparent and trustworthy for caregivers. Focuses on elderly activity detection using the ETRI-Activity3D dataset.
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Reliability:</em> Peer-reviewed ACM conference paper. Trusted for methodology and novelty in combining HAR with XAI.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Reference [3] -->
+                        <div class="reference-card" id="ravankar2023">
+                            <div class="reference-number">[3]</div>
+                            <div class="reference-content">
+                                <p class="reference-citation">
+                                    Abhijeet Ravankar, Arpit Rawankar, and Ankit A. Ravankar. 2023. Real-time monitoring of elderly people through computer vision. <em>Artificial Life and Robotics</em>, 28 (2023), 496–501. Springer. 
+                                    <a href="https://doi.org/10.1007/s10015-023-00882-y" target="_blank" class="doi-link">
+                                        <i class="bi bi-link-45deg"></i> https://doi.org/10.1007/s10015-023-00882-y
+                                    </a>
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Synopsis:</em> Introduces a real-time HAR system using CNNs and pose estimation (OpenPose) for detecting falls, sitting, eating, sleeping, and exercising. Focuses on privacy by storing only activity logs.
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Reliability:</em> Published in Springer's Artificial Life and Robotics journal, peer-reviewed, with real-world experimental validation.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Reference [4] -->
+                        <div class="reference-card" id="sensors2024">
+                            <div class="reference-number">[4]</div>
+                            <div class="reference-content">
+                                <p class="reference-citation">
+                                    F. Xavier Gaya-Morey, Cristina Manresa-Yee, and José M. Buades-Rubio. 2024. Deep learning for computer vision based activity recognition and fall detection of the elderly: a systematic review. <em>Applied Intelligence</em>, 54 (2024), 8982–9007. Springer. 
+                                    <a href="https://doi.org/10.1007/s10489-024-05645-1" target="_blank" class="doi-link">
+                                        <i class="bi bi-link-45deg"></i> https://doi.org/10.1007/s10489-024-05645-1
+                                    </a>
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Synopsis:</em> Systematic review of 151 studies (2019–2023) on deep learning methods for elderly HAR and fall detection. Discusses datasets, DL architectures, privacy issues, and deployment challenges.
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Reliability:</em> Comprehensive review article, peer-reviewed, highly reliable for state-of-the-art context.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Reference [5] -->
+                        <div class="reference-card" id="technologies2023">
+                            <div class="reference-number">[5]</div>
+                            <div class="reference-content">
+                                <p class="reference-citation">
+                                    Rahmat Ullah, Ikram Asghar, Saeed Akbar, Gareth Evans, Justus Vermaak, Abdulaziz Alblwi, and Amna Bamaqa. 2025. Vision-Based Activity Recognition for Unobtrusive Monitoring of the Elderly in Care Settings. <em>Technologies</em>, 13, 5 (2025), 184. MDPI. 
+                                    <a href="https://doi.org/10.3390/technologies13050184" target="_blank" class="doi-link">
+                                        <i class="bi bi-link-45deg"></i> https://doi.org/10.3390/technologies13050184
+                                    </a>
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Synopsis:</em> Presents a lightweight vision-based monitoring system using frame differencing and anomaly detection. Focuses on unobtrusive, privacy-preserving monitoring in care homes.
+                                </p>
+                                <p class="reference-annotation">
+                                    <em>Reliability:</em> Published in MDPI's peer-reviewed Technologies journal. Open access, recent, and relevant for real-world deployment.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4 text-center">Additional Resources</h2>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="resource-card">
+                                    <i class="bi bi-database-fill mb-3" style="font-size: 2.5rem;"></i>
+                                    <h5>Datasets</h5>
+                                    <ul class="resource-list">
+                                        <li>ETRI-Activity3D</li>
+                                        <li>UR Fall Detection</li>
+                                        <li>NTU RGB+D</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="resource-card">
+                                    <i class="bi bi-tools mb-3" style="font-size: 2.5rem;"></i>
+                                    <h5>Frameworks</h5>
+                                    <ul class="resource-list">
+                                        <li>OpenPose</li>
+                                        <li>MediaPipe</li>
+                                        <li>BlazePose</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="resource-card">
+                                    <i class="bi bi-book-fill mb-3" style="font-size: 2.5rem;"></i>
+                                    <h5>Related Topics</h5>
+                                    <ul class="resource-list">
+                                        <li>Explainable AI (XAI)</li>
+                                        <li>Edge Computing</li>
+                                        <li>Privacy-Preserving ML</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-5" style="background-color: #000000;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h2 class="mb-4 text-white">Ready to Test Your Knowledge?</h2>
+                        <p class="lead text-white mb-4">
+                            Take the interactive quiz to reinforce what you've learned throughout this tutorial.
+                        </p>
+                        <a href="quiz.html" class="btn btn-light btn-lg">
+                            Take the Quiz <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-white">About This Tutorial</h5>
+                    <p style="color: #cccccc;">
+                        A graduate-level interactive tutorial on computer vision applications for elderly care, focusing on activity recognition and fall detection systems.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none" style="color: #cccccc;">Home</a></li>
+                        <li><a href="introduction.html" class="text-decoration-none" style="color: #cccccc;">Introduction</a></li>
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">Bibliography</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">References</a></li>
+                        <li><a href="quiz.html" class="text-decoration-none" style="color: #cccccc;">Quiz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background-color: #666666; opacity: 1;">
+            <div class="text-center">
+                <p class="mb-0 text-white">&copy; 2025 Computer Vision for Elderly Care Tutorial. Educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Audio Player JS -->
+    <script src="audio-player.js"></script>
+</body>
+</html>
+

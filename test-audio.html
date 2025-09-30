@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .audio-test {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audio Files Test</h1>
+    <p>Testing all audio files to ensure they can be loaded and played.</p>
+
+    <div class="audio-test">
+        <h3>Introduction.mp3</h3>
+        <audio id="audio1" controls>
+            <source src="audio/Introduction.mp3" type="audio/mpeg">
+        </audio>
+        <div class="status" id="status1">Status: Not tested</div>
+    </div>
+
+    <div class="audio-test">
+        <h3>Sensors & Vision.mp3</h3>
+        <audio id="audio2" controls>
+            <source src="audio/Sensors & Vision.mp3" type="audio/mpeg">
+        </audio>
+        <div class="status" id="status2">Status: Not tested</div>
+    </div>
+
+    <div class="audio-test">
+        <h3>Techniques.mp3</h3>
+        <audio id="audio3" controls>
+            <source src="audio/Techniques.mp3" type="audio/mpeg">
+        </audio>
+        <div class="status" id="status3">Status: Not tested</div>
+    </div>
+
+    <div class="audio-test">
+        <h3>Algorithms.mp3</h3>
+        <audio id="audio4" controls>
+            <source src="audio/Algorithms.mp3" type="audio/mpeg">
+        </audio>
+        <div class="status" id="status4">Status: Not tested</div>
+    </div>
+
+    <div class="audio-test">
+        <h3>Fall Detection.mp3</h3>
+        <audio id="audio5" controls>
+            <source src="audio/Fall Detection.mp3" type="audio/mpeg">
+        </audio>
+        <div class="status" id="status5">Status: Not tested</div>
+    </div>
+
+    <div class="audio-test">
+        <h3>Challenges.mp3</h3>
+        <audio id="audio6" controls>
+            <source src="audio/Challenges.mp3" type="audio/mpeg">
+        </audio>
+        <div class="status" id="status6">Status: Not tested</div>
+    </div>
+
+    <div class="audio-test">
+        <h3>Datasets.mp3</h3>
+        <audio id="audio7" controls>
+            <source src="audio/Datasets.mp3" type="audio/mpeg">
+        </audio>
+        <div class="status" id="status7">Status: Not tested</div>
+    </div>
+
+    <div class="audio-test">
+        <h3>bibliography.mp3</h3>
+        <audio id="audio8" controls>
+            <source src="audio/bibliography.mp3" type="audio/mpeg">
+        </audio>
+        <div class="status" id="status8">Status: Not tested</div>
+    </div>
+
+    <div class="audio-test">
+        <h3>Quiz.mp3</h3>
+        <audio id="audio9" controls>
+            <source src="audio/Quiz.mp3" type="audio/mpeg">
+        </audio>
+        <div class="status" id="status9">Status: Not tested</div>
+    </div>
+
+    <script>
+        // Test each audio file
+        for (let i = 1; i <= 9; i++) {
+            const audio = document.getElementById('audio' + i);
+            const status = document.getElementById('status' + i);
+            
+            audio.addEventListener('loadeddata', function() {
+                status.textContent = 'Status: ✅ Loaded successfully (Duration: ' + Math.round(audio.duration) + 's)';
+                status.style.background = '#d4edda';
+            });
+            
+            audio.addEventListener('error', function(e) {
+                status.textContent = 'Status: ❌ Error loading file - ' + (audio.error ? audio.error.message : 'Unknown error');
+                status.style.background = '#f8d7da';
+            });
+            
+            audio.addEventListener('play', function() {
+                status.textContent = 'Status: ▶️ Playing...';
+                status.style.background = '#cce5ff';
+            });
+            
+            audio.addEventListener('pause', function() {
+                status.textContent = 'Status: ⏸️ Paused';
+                status.style.background = '#fff3cd';
+            });
+        }
+    </script>
+</body>
+</html>
+

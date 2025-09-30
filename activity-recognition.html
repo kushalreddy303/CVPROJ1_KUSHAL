@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techniques for Activity Recognition - CV for Elderly Care</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-eye-fill"></i> CV for Elderly Care
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border-color: #000;">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="introduction.html">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sensors.html">Sensors & Vision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="activity-recognition.html">Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="algorithms.html">Algorithms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fall-detection.html">Fall Detection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="challenges.html">Challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="datasets.html">Datasets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bibliography.html">Bibliography</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Audio Player and Reading Time -->
+    <div class="page-controls">
+        <button id="audioPlayerBtn" class="audio-player-btn" aria-label="Play audio narration">
+            <i id="playIcon" class="bi bi-play-fill"></i>
+            <i id="pauseIcon" class="bi bi-pause-fill" style="display: none;"></i>
+            <span>Listen</span>
+        </button>
+        <div class="read-time-badge" aria-label="Estimated reading time">
+            <i class="bi bi-clock-fill"></i>
+            <span>6 min read</span>
+        </div>
+    </div>
+    <audio id="pageAudio" class="page-audio" preload="metadata">
+        <source src="audio/Techniques.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Main Content -->
+    <main class="content-section">
+        <!-- Page Title -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h1 class="display-4 fw-bold mb-3">Techniques for Activity Recognition</h1>
+                        <p class="lead text-muted">
+                            From classical machine learning to deep neural networks and explainable AI.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- From Video to Understanding Section -->
+        <section id="intro" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">From Video to Understanding</h2>
+                        
+                        <p class="lead">
+                            Once sensors (RGB, depth, or infrared) and pose estimation frameworks provide input, the next step is to <strong>analyze the data and recognize human activities</strong>. This requires algorithms capable of interpreting movements, detecting patterns, and classifying them into meaningful actions like walking, sitting, exercising, or falling.
+                        </p>
+
+                        <p class="mb-4">
+                            Researchers have explored many approaches, ranging from classic machine learning to deep learning and explainable AI.
+                        </p>
+
+                        <!-- Flowchart Image -->
+                        <div class="text-center my-5">
+                            <div class="image-container">
+                                <img src="assets/techniques-flowchart.png" alt="Activity Recognition Pipeline - Video → Feature Extraction → Classification" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Classical ML Section -->
+        <section id="classical-ml" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Classical Machine Learning Approaches</h2>
+                        
+                        <p class="lead mb-4">
+                            Early systems relied on <strong>handcrafted features</strong> such as joint angles, body silhouettes, or optical flow. These features were then fed into algorithms like:
+                        </p>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="technique-card">
+                                    <div class="technique-icon">
+                                        <i class="bi bi-diagram-2-fill"></i>
+                                    </div>
+                                    <h5>Support Vector Machines (SVMs)</h5>
+                                    <p>Effective for binary classification (e.g., fall vs. no fall).</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="technique-card">
+                                    <div class="technique-icon">
+                                        <i class="bi bi-tree-fill"></i>
+                                    </div>
+                                    <h5>Decision Trees & Random Forests</h5>
+                                    <p>Simple but effective for multi-class activity recognition.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="technique-card">
+                                    <div class="technique-icon">
+                                        <i class="bi bi-layers-fill"></i>
+                                    </div>
+                                    <h5>Ensemble Methods</h5>
+                                    <p>Combining multiple classifiers to boost accuracy <a href="bibliography.html#gaikwad2023">[1]</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-custom alert-info mt-4">
+                            <i class="bi bi-info-circle-fill me-2"></i>
+                            <strong>Note:</strong> These methods are lightweight and interpretable, but they often struggle with complex real-world scenarios.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deep Learning Section -->
+        <section id="deep-learning" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Deep Learning Approaches</h2>
+                        
+                        <p class="lead mb-5">
+                            Deep learning has revolutionized <strong>Human Activity Recognition (HAR)</strong> by learning features automatically from raw video or skeleton data.
+                        </p>
+
+                        <!-- CNN -->
+                        <div class="dl-method-card mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-2 text-center">
+                                    <div class="dl-number">1</div>
+                                </div>
+                                <div class="col-md-10">
+                                    <h3 class="mb-3">Convolutional Neural Networks (CNNs)</h3>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i>Great for extracting <strong>spatial features</strong> from images or video frames</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Used to identify body posture, shapes, and spatial patterns <a href="bibliography.html#ravankar2023">[2]</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RNN/LSTM -->
+                        <div class="dl-method-card mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-2 text-center">
+                                    <div class="dl-number">2</div>
+                                </div>
+                                <div class="col-md-10">
+                                    <h3 class="mb-3">Recurrent Neural Networks (RNNs) & LSTMs</h3>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i>Capture <strong>temporal patterns</strong> (sequences over time)</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Example: distinguishing standing up from already standing</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>LSTMs are especially effective in handling long-term dependencies <a href="bibliography.html#sensors2024">[4]</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GCN -->
+                        <div class="dl-method-card mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-2 text-center">
+                                    <div class="dl-number">3</div>
+                                </div>
+                                <div class="col-md-10">
+                                    <h3 class="mb-3">Graph Convolutional Networks (GCNs)</h3>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i>Treat skeleton keypoints as <strong>nodes in a graph</strong></li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Learn spatial and temporal relationships between joints (e.g., hip → knee → ankle movement)</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Highly efficient for skeleton-based activity recognition <a href="bibliography.html#sensors2024">[4]</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skeleton Graph Image -->
+                        <div class="text-center my-5">
+                            <div class="image-container">
+                                <img src="assets/skeleton-graph.png" alt="Skeleton Graph Structure - Joints as nodes, connections as edges for GCN processing" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anomaly Detection Section -->
+        <section id="anomaly" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Anomaly Detection for Unusual Events</h2>
+                        
+                        <p class="lead mb-4">
+                            Sometimes, instead of classifying every possible action, the system learns what is <strong>"normal" behavior</strong> and flags deviations.
+                        </p>
+
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm" style="border-left: 4px solid #000;">
+                                    <div class="card-body">
+                                        <i class="bi bi-activity mb-3" style="font-size: 2rem;"></i>
+                                        <h5 class="card-title">Normal Behavior</h5>
+                                        <p class="card-text">System learns typical daily patterns and activities.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm" style="border-left: 4px solid #000;">
+                                    <div class="card-body">
+                                        <i class="bi bi-exclamation-triangle-fill mb-3" style="font-size: 2rem;"></i>
+                                        <h5 class="card-title">Detect Anomalies</h5>
+                                        <p class="card-text">Flags deviations like prolonged inactivity or sudden falls <a href="bibliography.html#technologies2023">[3]</a>.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm" style="border-left: 4px solid #000;">
+                                    <div class="card-body">
+                                        <i class="bi bi-lightning-charge-fill mb-3" style="font-size: 2rem;"></i>
+                                        <h5 class="card-title">Lightweight Models</h5>
+                                        <p class="card-text">Often implemented with unsupervised learning for rare events.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <blockquote class="border-start border-3 border-dark ps-4 py-2 mt-4">
+                            <p class="mb-0">
+                                <strong>Advantage:</strong> Useful when collecting training data for rare events is difficult.
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explainable AI Section -->
+        <section id="xai" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Explainable AI (XAI)</h2>
+                        
+                        <p class="lead mb-4">
+                            Trust is crucial in elderly care. Caregivers and families need to understand <strong>why an AI system raised an alert</strong>.
+                        </p>
+
+                        <div class="row align-items-center mb-5">
+                            <div class="col-md-6">
+                                <div class="xai-card">
+                                    <h4 class="mb-3"><i class="bi bi-lightbulb-fill me-2"></i>LIME</h4>
+                                    <p class="mb-3"><strong>Local Interpretable Model-Agnostic Explanations</strong></p>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i>Highlights which video regions influenced the prediction <a href="bibliography.html#gaya2024">[5]</a></li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Helps doctors, nurses, and family members trust the system</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Identifies possible causes of misclassification (e.g., shadow mistaken for a fall)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="image-container">
+                                    <img src="assets/lime-explanation.png" alt="LIME Explanation - Highlighted regions showing what influenced the AI decision" class="img-fluid rounded shadow">
+                                    <div class="ai-generated-label">AI GENERATED</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-custom alert-info">
+                            <i class="bi bi-shield-check me-2"></i>
+                            <strong>Why It Matters:</strong> Explainability builds trust and helps identify system errors before they cause harm.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Takeaway Section -->
+        <section id="takeaway" class="py-5" style="background-color: #000000;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h2 class="mb-4 text-white">Key Takeaway</h2>
+                        <p class="lead text-white mb-5">
+                            Activity recognition techniques range from <strong>classic ML</strong> (fast, simple, but limited) to <strong>deep learning and GCNs</strong> (powerful, data-hungry, state-of-the-art). Increasingly, researchers are combining methods, using <strong>pose estimation + deep learning + explainable AI</strong> to create systems that are accurate, efficient, and trustworthy.
+                        </p>
+
+                        <div class="mt-5">
+                            <a href="fall-detection.html" class="btn btn-light btn-lg">
+                                Next: Fall Detection Systems <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-white">About This Tutorial</h5>
+                    <p style="color: #cccccc;">
+                        A graduate-level interactive tutorial on computer vision applications for elderly care, focusing on activity recognition and fall detection systems.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none" style="color: #cccccc;">Home</a></li>
+                        <li><a href="introduction.html" class="text-decoration-none" style="color: #cccccc;">Introduction</a></li>
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">Bibliography</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">References</a></li>
+                        <li><a href="quiz.html" class="text-decoration-none" style="color: #cccccc;">Quiz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background-color: #666666; opacity: 1;">
+            <div class="text-center">
+                <p class="mb-0 text-white">&copy; 2025 Computer Vision for Elderly Care Tutorial. Educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Audio Player JS -->
+    <script src="audio-player.js"></script>
+</body>
+</html>
+

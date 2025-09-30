@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Vision for Elderly Activity Recognition and Fall Detection</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-eye-fill"></i> CV for Elderly Care
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border-color: #000;">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="introduction.html">Introduction</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Technical Content
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="sensors.html">Sensors & Vision Approaches</a></li>
+                            <li><a class="dropdown-item" href="activity-recognition.html">Activity Recognition</a></li>
+                            <li><a class="dropdown-item" href="algorithms.html">Algorithms</a></li>
+                            <li><a class="dropdown-item" href="fall-detection.html">Fall Detection Systems</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="challenges.html">Challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="datasets.html">Datasets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bibliography.html">Bibliography</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html"><i class="bi bi-question-circle-fill"></i> Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white text-center py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-lg-start">
+                    <h1 class="display-4 fw-bold mb-4">Computer Vision for Elderly Activity Recognition and Fall Detection</h1>
+                    <p class="lead mb-4">
+                        An interactive tutorial exploring cutting-edge vision technologies that enhance safety and independence for aging populations.
+                    </p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a href="introduction.html" class="btn btn-outline-light btn-lg px-4">
+                            <i class="bi bi-play-circle" color="black"></i> Start Tutorial
+                        </a>
+                        <a href="#overview" class="btn btn-outline-light btn-lg px-4">
+                            <i class="bi bi-info-circle"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <img src="images/hero-elderly-care.svg" alt="Elderly care monitoring illustration" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivation Section -->
+    <section id="overview" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-center mb-4">Why This Matters</h2>
+                    <p class="lead text-center mb-5">
+                        The global population is aging rapidly, creating unprecedented challenges and opportunities for healthcare technology.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="feature-icon rounded-circle mb-3 mx-auto">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                            <h5 class="card-title">Aging Population</h5>
+                            <p class="card-text">
+                                By 2050, the global population aged 60+ is projected to reach 2.1 billion. This demographic shift demands scalable monitoring solutions that preserve dignity and autonomy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="feature-icon rounded-circle mb-3 mx-auto">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
+                            </div>
+                            <h5 class="card-title">Fall Risk</h5>
+                            <p class="card-text">
+                                Falls are the leading cause of injury-related deaths among older adults. One in four adults aged 65+ falls each year, with only half reporting it to their healthcare provider <a href="bibliography.html#gaikwad2023">[1]</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="feature-icon rounded-circle mb-3 mx-auto">
+                                <i class="bi bi-camera-video-fill"></i>
+                            </div>
+                            <h5 class="card-title">Vision-Based Solutions</h5>
+                            <p class="card-text">
+                                Computer vision offers non-intrusive, continuous monitoring that can detect falls, recognize activities, and alert caregivers—all while respecting privacy through advanced processing techniques <a href="bibliography.html#ravankar2023">[2]</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Structure -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Tutorial Structure</h2>
+            <p class="text-center text-muted mb-5">
+                <i class="bi bi-clock"></i> Estimated completion time: 15-30 minutes
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="tutorial-card p-4 border rounded shadow-sm h-100">
+                        <div class="d-flex align-items-start">
+                            <div class="tutorial-number me-3">1</div>
+                            <div>
+                                <h5><a href="introduction.html" class="text-decoration-none">Introduction and Problem Definition</a></h5>
+                                <p class="text-muted mb-0">
+                                    Explore the societal need for elderly monitoring, key challenges in fall detection, and how computer vision addresses these problems.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="tutorial-card p-4 border rounded shadow-sm h-100">
+                        <div class="d-flex align-items-start">
+                            <div class="tutorial-number me-3">2</div>
+                            <div>
+                                <h5><a href="sensors.html" class="text-decoration-none">Sensors and Vision Approaches</a></h5>
+                                <p class="text-muted mb-0">
+                                    Compare RGB cameras, depth sensors (Kinect, RealSense), infrared imaging, and pose estimation frameworks like OpenPose and BlazePose.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="tutorial-card p-4 border rounded shadow-sm h-100">
+                        <div class="d-flex align-items-start">
+                            <div class="tutorial-number me-3">3</div>
+                            <div>
+                                <h5><a href="activity-recognition.html" class="text-decoration-none">Techniques for Activity Recognition</a></h5>
+                                <p class="text-muted mb-0">
+                                    Deep dive into CNNs for spatial features, RNNs/LSTMs for temporal modeling, Graph Convolutional Networks for skeleton-based recognition, and explainable AI approaches <a href="bibliography.html#gaya2024">[3]</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="tutorial-card p-4 border rounded shadow-sm h-100">
+                        <div class="d-flex align-items-start">
+                            <div class="tutorial-number me-3">4</div>
+                            <div>
+                                <h5><a href="fall-detection.html" class="text-decoration-none">Fall Detection Systems</a></h5>
+                                <p class="text-muted mb-0">
+                                    Examine real-world systems, their architectures, success rates, and critical limitations in deployment scenarios.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="tutorial-card p-4 border rounded shadow-sm h-100">
+                        <div class="d-flex align-items-start">
+                            <div class="tutorial-number me-3">5</div>
+                            <div>
+                                <h5><a href="challenges.html" class="text-decoration-none">Challenges</a></h5>
+                                <p class="text-muted mb-0">
+                                    Address privacy concerns, dataset bias, computational constraints, occlusion handling, and ethical considerations in elderly monitoring.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="tutorial-card p-4 border rounded shadow-sm h-100">
+                        <div class="d-flex align-items-start">
+                            <div class="tutorial-number me-3">6</div>
+                            <div>
+                                <h5><a href="future.html" class="text-decoration-none">Future Directions and Conclusions</a></h5>
+                                <p class="text-muted mb-0">
+                                    Discover emerging trends: edge computing, federated learning, multimodal fusion, and the path toward trustworthy AI in healthcare.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="introduction.html" class="btn btn-primary btn-lg">
+                    Begin Tutorial <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Elements Teaser -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Interactive Learning</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <i class="bi bi-question-circle-fill" style="font-size: 3rem;"></i>
+                            <h5 class="card-title mt-3">Knowledge Quiz</h5>
+                            <p class="card-text">Test your understanding with interactive quizzes throughout the tutorial.</p>
+                            <a href="quiz.html" class="btn btn-outline-primary">Take Quiz</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <i class="bi bi-play-circle-fill" style="font-size: 3rem;"></i>
+                            <h5 class="card-title mt-3">Interactive Demos</h5>
+                            <p class="card-text">Explore pose estimation and fall detection algorithms in action.</p>
+                            <a href="sensors.html#demo" class="btn btn-outline-primary">View Demos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <i class="bi bi-images" style="font-size: 3rem;"></i>
+                            <h5 class="card-title mt-3">Visual Slideshows</h5>
+                            <p class="card-text">Navigate through system architectures and algorithm comparisons.</p>
+                            <a href="activity-recognition.html#slideshow" class="btn btn-outline-primary">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-white">About This Tutorial</h5>
+                    <p style="color: #cccccc;">
+                        A graduate-level interactive tutorial on computer vision applications for elderly care, focusing on activity recognition and fall detection systems.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="introduction.html" class="text-decoration-none" style="color: #cccccc;">Introduction</a></li>
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">Bibliography</a></li>
+                        <li><a href="quiz.html" class="text-decoration-none" style="color: #cccccc;">Quiz</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">References</a></li>
+                        <li><a href="https://github.com" class="text-decoration-none" style="color: #cccccc;" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background-color: #666666; opacity: 1;">
+            <div class="text-center">
+                <p class="mb-0 text-white">&copy; 2025 Computer Vision for Elderly Care Tutorial. Educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

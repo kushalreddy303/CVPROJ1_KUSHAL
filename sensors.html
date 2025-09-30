@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensors and Vision Approaches - CV for Elderly Care</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-eye-fill"></i> CV for Elderly Care
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border-color: #000;">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="introduction.html">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="sensors.html">Sensors & Vision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="activity-recognition.html">Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="algorithms.html">Algorithms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fall-detection.html">Fall Detection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="challenges.html">Challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="datasets.html">Datasets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bibliography.html">Bibliography</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Audio Player and Reading Time -->
+    <div class="page-controls">
+        <button id="audioPlayerBtn" class="audio-player-btn" aria-label="Play audio narration">
+            <i id="playIcon" class="bi bi-play-fill"></i>
+            <i id="pauseIcon" class="bi bi-pause-fill" style="display: none;"></i>
+            <span>Listen</span>
+        </button>
+        <div class="read-time-badge" aria-label="Estimated reading time">
+            <i class="bi bi-clock-fill"></i>
+            <span>5 min read</span>
+        </div>
+    </div>
+    <audio id="pageAudio" class="page-audio" preload="metadata">
+        <source src="audio/Sensors & Vision.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Main Content -->
+    <main class="content-section">
+        <!-- Page Title -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h1 class="display-4 fw-bold mb-3">Sensors and Vision Approaches</h1>
+                        <p class="lead text-muted">
+                            Understanding the hardware and frameworks that enable non-intrusive elderly monitoring.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Sensors Matter Section -->
+        <section id="why-sensors" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Why Sensors Matter</h2>
+                        
+                        <p class="lead">
+                            To recognize human activities like walking, sitting, or falling, a system first needs raw data. Traditionally, elderly monitoring systems used <strong>wearable sensors</strong> (accelerometers, gyroscopes, heart-rate monitors). While effective, they have key problems:
+                        </p>
+
+                        <div class="row g-4 my-4">
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm" style="border-left: 4px solid #000;">
+                                    <div class="card-body">
+                                        <i class="bi bi-x-circle-fill mb-3" style="font-size: 2rem;"></i>
+                                        <h5 class="card-title">Compliance Issues</h5>
+                                        <p class="card-text">Older adults may <strong>forget or refuse</strong> to wear them.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm" style="border-left: 4px solid #000;">
+                                    <div class="card-body">
+                                        <i class="bi bi-emoji-frown-fill mb-3" style="font-size: 2rem;"></i>
+                                        <h5 class="card-title">Comfort & Stigma</h5>
+                                        <p class="card-text">They can be <strong>uncomfortable and stigmatizing</strong>.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm" style="border-left: 4px solid #000;">
+                                    <div class="card-body">
+                                        <i class="bi bi-battery-charging mb-3" style="font-size: 2rem;"></i>
+                                        <h5 class="card-title">Maintenance</h5>
+                                        <p class="card-text">Limited by <strong>battery life and maintenance</strong>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-custom alert-info">
+                            <i class="bi bi-lightbulb-fill me-2"></i>
+                            <strong>Solution:</strong> Because of these limitations, researchers have turned to <strong>vision-based sensors</strong> — cameras and depth sensors that can capture body movement without requiring the person to wear anything <a href="bibliography.html#ravankar2023">[2]</a> <a href="bibliography.html#technologies2023">[3]</a>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision-Based Modalities Section -->
+        <section id="modalities" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-5">Vision-Based Modalities</h2>
+
+                        <!-- RGB Cameras -->
+                        <div class="modality-card mb-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <div class="modality-number">1</div>
+                                    <h3 class="mb-3">RGB Cameras</h3>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i>Capture regular color video (like a webcam)</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Widely available, cheap, and easy to install</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Provide rich visual information but raise privacy concerns</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Useful for general activity recognition (walking, eating, exercising)</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="image-container">
+                                        <img src="assets/RGB Camera.png" alt="RGB Camera" class="img-fluid rounded shadow">
+                                        <div class="ai-generated-label">AI GENERATED</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Depth Cameras -->
+                        <div class="modality-card mb-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <div class="modality-number">2</div>
+                                    <h3 class="mb-3">Depth Cameras</h3>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i>Measure distance between objects and the camera</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Examples: Microsoft Kinect, Intel RealSense</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Generate skeleton data (stick-figure body landmarks)</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Preserve more privacy than RGB because they don't record identifiable facial features <a href="bibliography.html#sensors2024">[4]</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="image-container">
+                                        <img src="assets/Depth Sesor.png" alt="Depth Sensor" class="img-fluid rounded shadow">
+                                        <div class="ai-generated-label">AI GENERATED</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Infrared Sensors -->
+                        <div class="modality-card mb-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <div class="modality-number">3</div>
+                                    <h3 class="mb-3">Infrared (IR) Sensors</h3>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i>Capture heat patterns or silhouettes</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Work well in low light or nighttime conditions</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Often used for fall detection where only outlines are needed</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>Sacrifice detail for privacy and efficiency</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="image-container">
+                                        <img src="assets/Infrared Sensor.png" alt="Infrared Sensor" class="img-fluid rounded shadow">
+                                        <div class="ai-generated-label">AI GENERATED</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comparison Image Placeholder -->
+                        <div class="text-center my-5">
+                            <div class="image-container">
+                                <img src="assets/sensors-comparison.png" alt="RGB vs. Depth vs. Infrared Output Comparison" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pose Estimation Frameworks Section -->
+        <section id="pose-estimation" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Pose Estimation Frameworks</h2>
+                        
+                        <p class="lead mb-5">
+                            Instead of storing full video, modern CV systems extract <strong>body landmarks</strong> — keypoints like shoulders, hips, knees, and ankles — to represent human posture.
+                        </p>
+
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="framework-card">
+                                    <div class="framework-icon">
+                                        <i class="bi bi-person-arms-up"></i>
+                                    </div>
+                                    <h4>OpenPose</h4>
+                                    <p>Popular deep learning framework for <strong>real-time multi-person</strong> pose estimation <a href="bibliography.html#ravankar2023">[2]</a>.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="framework-card">
+                                    <div class="framework-icon">
+                                        <i class="bi bi-lightning-charge-fill"></i>
+                                    </div>
+                                    <h4>BlazePose</h4>
+                                    <p>Lightweight model optimized for <strong>mobile and edge devices</strong>; detects 33 body landmarks <a href="bibliography.html#gaikwad2023">[1]</a>.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="framework-card">
+                                    <div class="framework-icon">
+                                        <i class="bi bi-google"></i>
+                                    </div>
+                                    <h4>MediaPipe</h4>
+                                    <p>Google's library integrating BlazePose and other ML models for <strong>cross-platform development</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skeleton Pose Image Placeholder -->
+                        <div class="text-center my-5">
+                            <div class="image-container">
+                                <img src="assets/skeleton-pose.png" alt="Body Landmark Detection - Skeleton figure showing detected keypoints (shoulders, hips, knees, ankles)" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+
+                        <blockquote class="border-start border-3 border-dark ps-4 py-2">
+                            <p class="mb-0">
+                                By converting raw video into numerical joint data, these systems <strong>reduce memory use</strong> and <strong>protect privacy</strong>, while still enabling accurate activity recognition.
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Takeaway Section -->
+        <section id="takeaway" class="py-5" style="background-color: #000000;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h2 class="mb-4 text-white">Key Takeaway</h2>
+                        <p class="lead text-white mb-4">
+                            Vision-based sensors and pose estimation frameworks have transformed elderly monitoring:
+                        </p>
+                        
+                        <div class="row g-4 text-white">
+                            <div class="col-md-4">
+                                <i class="bi bi-check-circle-fill mb-3" style="font-size: 2.5rem; color: #ffffff;"></i>
+                                <h5 class="text-white">Non-Intrusive</h5>
+                                <p class="text-white">Enable real-time observation without wearables</p>
+                            </div>
+                            <div class="col-md-4">
+                                <i class="bi bi-shield-check mb-3" style="font-size: 2.5rem; color: #ffffff;"></i>
+                                <h5 class="text-white">Privacy Balance</h5>
+                                <p class="text-white">Balance between detail (RGB) and privacy (depth/IR)</p>
+                            </div>
+                            <div class="col-md-4">
+                                <i class="bi bi-cpu-fill mb-3" style="font-size: 2.5rem; color: #ffffff;"></i>
+                                <h5 class="text-white">AI Foundation</h5>
+                                <p class="text-white">Provide foundation for advanced algorithms (CNNs, RNNs, GCNs)</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <a href="activity-recognition.html" class="btn btn-light btn-lg">
+                                Next: Activity Recognition Techniques <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-white">About This Tutorial</h5>
+                    <p style="color: #cccccc;">
+                        A graduate-level interactive tutorial on computer vision applications for elderly care, focusing on activity recognition and fall detection systems.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none" style="color: #cccccc;">Home</a></li>
+                        <li><a href="introduction.html" class="text-decoration-none" style="color: #cccccc;">Introduction</a></li>
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">Bibliography</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">References</a></li>
+                        <li><a href="quiz.html" class="text-decoration-none" style="color: #cccccc;">Quiz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background-color: #666666; opacity: 1;">
+            <div class="text-center">
+                <p class="mb-0 text-white">&copy; 2025 Computer Vision for Elderly Care Tutorial. Educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Audio Player JS -->
+    <script src="audio-player.js"></script>
+</body>
+</html>
+

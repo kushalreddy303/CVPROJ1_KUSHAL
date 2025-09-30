@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms: Motion & Pose-Based Methods - Elderly Activity Recognition Tutorial</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">CV for Elderly Care</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="introduction.html">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sensors.html">Sensors & Vision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="activity-recognition.html">Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="algorithms.html">Algorithms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fall-detection.html">Fall Detection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="challenges.html">Challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="datasets.html">Datasets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bibliography.html">Bibliography</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Audio Player and Reading Time -->
+    <div class="page-controls">
+        <button id="audioPlayerBtn" class="audio-player-btn" aria-label="Play audio narration">
+            <i id="playIcon" class="bi bi-play-fill"></i>
+            <i id="pauseIcon" class="bi bi-pause-fill" style="display: none;"></i>
+            <span>Listen</span>
+        </button>
+        <div class="read-time-badge" aria-label="Estimated reading time">
+            <i class="bi bi-clock-fill"></i>
+            <span>7 min read</span>
+        </div>
+    </div>
+    <audio id="pageAudio" class="page-audio" preload="metadata">
+        <source src="audio/Algorithms.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Page Title -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h1 class="display-4 fw-bold mb-3">Algorithms: Motion & Pose-Based Methods</h1>
+                        <p class="lead text-muted">
+                            Practical, real-time algorithms for activity recognition and fall detection from research papers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section id="overview" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Overview</h2>
+                        <p class="lead mb-4">
+                            In this section, we'll explore <strong>two practical algorithms</strong> taken from the research papers cited in this tutorial. These methods are designed for <strong>real-time deployment</strong> and <strong>privacy-aware monitoring</strong> in elderly care settings.
+                        </p>
+                        <p class="mb-4">
+                            Building on the <a href="activity-recognition.html">techniques</a> we've covered, these algorithms demonstrate how to implement motion detection and pose-based activity recognition in resource-constrained environments. They're particularly relevant for <a href="fall-detection.html">fall detection systems</a> that need to balance accuracy with computational efficiency.
+                        </p>
+                        
+                        <div class="alert alert-custom alert-info">
+                            <i class="bi bi-lightbulb-fill me-2"></i>
+                            <strong>Key Insight:</strong> These algorithms can run on edge devices (cameras, smart home hubs) without sending raw video to the cloud, preserving privacy while enabling real-time monitoring.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Algorithm A Section -->
+        <section id="algorithm-a" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Algorithm A — Frame-Differencing + Moving-Average</h2>
+                        <h4 class="text-muted mb-4">(Motion & Anomaly Seed)</h4>
+                        
+                        <div class="source-badge mb-4">
+                            <i class="bi bi-file-text me-2"></i>
+                            <strong>Source:</strong> Ullah et al., 2025 <a href="bibliography.html#technologies2023">[5]</a>
+                        </div>
+
+                        <div class="algorithm-card mb-5">
+                            <h5 class="mb-3"><i class="bi bi-gear-fill me-2"></i>What It Does</h5>
+                            <p>
+                                Detects motion by <strong>differencing consecutive frames</strong>, thresholding, counting contours, and smoothing decisions with a fixed window. Serves as a base for <strong>anomaly detection</strong> by learning "normal" motion patterns.
+                            </p>
+                        </div>
+
+                        <h5 class="mb-3">Steps</h5>
+                        <ol class="feature-list mb-4">
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Convert current frame to grayscale.</li>
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Absolute difference with previous frame.</li>
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Binary threshold the difference image.</li>
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Find contours; set motion flag = 1 if count ≥ detection threshold, else 0.</li>
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Push flag into a window of size W; if the sum ≥ W/2, declare sustained motion.</li>
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>(Optional) Update a per-resident normal profile and flag deviations as anomalies.</li>
+                        </ol>
+
+                        <!-- Algorithm A Flowchart -->
+                        <div class="text-center my-5">
+                            <div class="image-container">
+                                <img src="assets/algorithms-flow.jpg" alt="Frame-Differencing Pipeline - Motion detection flowchart" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+
+                        <h5 class="mb-3">Pseudocode</h5>
+                        <pre class="code-block"><code>initialize previous_frame ← null
+initialize motion_window[W] ← zeros
+idx ← 0
+
+for each frame in video_stream:
+    gray ← to_grayscale(frame)
+    if previous_frame is not null:
+        diff ← abs(gray - previous_frame)
+        binary ← threshold(diff, T_binary)
+        contours ← find_contours(binary)
+
+        motion_flag ← 1 if count(contours) ≥ T_detect else 0
+        motion_window[idx] ← motion_flag
+        idx ← (idx + 1) mod W
+
+        sustained_motion ← sum(motion_window) ≥ W/2
+        if sustained_motion:
+            mark_event("motion")
+            # optional: anomaly = update_profile_and_check(sustained_motion, time, zone)
+    previous_frame ← gray</code></pre>
+
+                        <div class="row g-4 mt-4">
+                            <div class="col-md-6">
+                                <div class="pros-card">
+                                    <h6><i class="bi bi-check-circle-fill me-2"></i>Why Use It</h6>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-lightning-fill me-2"></i>Very fast; minimal computational overhead</li>
+                                        <li><i class="bi bi-shield-check me-2"></i>Works with RGB, depth, or IR (privacy-friendlier)</li>
+                                        <li><i class="bi bi-cpu me-2"></i>Good for edge devices with limited resources</li>
+                                        <li><i class="bi bi-graph-up me-2"></i>Can learn normal patterns for anomaly detection</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="cons-card">
+                                    <h6><i class="bi bi-exclamation-triangle-fill me-2"></i>Trade-offs</h6>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-sun me-2"></i>Sensitive to lighting changes</li>
+                                        <li><i class="bi bi-sliders me-2"></i>Requires threshold tuning per room</li>
+                                        <li><i class="bi bi-clock-history me-2"></i>Combine with temporal logic to avoid false alarms</li>
+                                        <li><i class="bi bi-camera me-2"></i>May miss slow, subtle movements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Algorithm B Section -->
+        <section id="algorithm-b" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Algorithm B — Pose-Angle Decision Tree</h2>
+                        <h4 class="text-muted mb-4">(Activities & Falls)</h4>
+                        
+                        <div class="source-badge mb-4">
+                            <i class="bi bi-file-text me-2"></i>
+                            <strong>Source:</strong> Ravankar et al., 2023 <a href="bibliography.html#ravankar2023">[3]</a>
+                        </div>
+
+                        <div class="algorithm-card mb-5">
+                            <h5 class="mb-3"><i class="bi bi-gear-fill me-2"></i>What It Does</h5>
+                            <p>
+                                Uses <strong>pose keypoints</strong> to compute torso/hip angles and height to classify <strong>sitting, standing, sleeping</strong>, and detect rapid <strong>vertical→horizontal transitions</strong> for falls; optionally refines by room "zones".
+                            </p>
+                        </div>
+
+                        <h5 class="mb-3">Steps</h5>
+                        <ol class="feature-list mb-4">
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Run pose estimation to get keypoints (neck, hip, knees, ankles).</li>
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Compute torso angle and relative height.</li>
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Decide state via thresholds (sleeping / sitting / standing).</li>
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Refine with zone info (e.g., table → "eating").</li>
+                            <li><i class="bi bi-arrow-right-circle me-2"></i>Flag fall if sudden posture drop + low height persists briefly.</li>
+                        </ol>
+
+                        <!-- Algorithm B Pose Graph -->
+                        <div class="text-center my-5">
+                            <div class="image-container">
+                                <img src="assets/pose-graph.jpg" alt="Pose-Angle Decision Tree - Skeleton keypoints and angle computation" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+
+                        <h5 class="mb-3">Pseudocode</h5>
+                        <pre class="code-block"><code>keypoints ← pose_estimate(frame)  # e.g., OpenPose/MediaPipe
+if valid(keypoints):
+    neck ← keypoints["neck"]; hip ← keypoints["hip"]
+    θ ← torso_angle(neck, hip)     # vertical vs horizontal
+    h ← torso_height(neck, hip)
+
+    if θ ≈ 180° and h < H_sleep: state ← "sleeping"
+    elif θ ∈ [θ_sit_min, θ_sit_max]: state ← "sitting"
+    else: state ← "standing"
+
+    zone ← lookup_zone(neck or hip)
+    state ← refine_by_zone(state, zone)
+
+    if rapid_vertical_to_horizontal() and low_height_persist():
+        state ← "fall"; raise_alarm()
+log(state, timestamp)</code></pre>
+
+                        <div class="row g-4 mt-4">
+                            <div class="col-md-6">
+                                <div class="pros-card">
+                                    <h6><i class="bi bi-check-circle-fill me-2"></i>Why Use It</h6>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-eye-fill me-2"></i>Transparent rules; easy to understand</li>
+                                        <li><i class="bi bi-cpu me-2"></i>Low compute; runs on edge devices</li>
+                                        <li><i class="bi bi-chat-dots me-2"></i>Easy to explain to caregivers</li>
+                                        <li><i class="bi bi-activity me-2"></i>Provides interpretable activity labels</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="cons-card">
+                                    <h6><i class="bi bi-exclamation-triangle-fill me-2"></i>Trade-offs</h6>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-person-bounding-box me-2"></i>Needs reliable keypoints</li>
+                                        <li><i class="bi bi-sliders me-2"></i>Tune angles and timing per environment</li>
+                                        <li><i class="bi bi-x-circle me-2"></i>May have false positives from quick sits</li>
+                                        <li><i class="bi bi-camera-video me-2"></i>Requires good camera angle and lighting</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- When to Use Which Section -->
+        <section id="comparison" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">When to Use Which</h2>
+
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="comparison-card">
+                                    <div class="comparison-icon">
+                                        <i class="bi bi-lightning-charge-fill"></i>
+                                    </div>
+                                    <h5>Algorithm A</h5>
+                                    <p class="small">
+                                        <strong>Best for:</strong> Very low compute, privacy-aware silhouettes (IR/depth), motion presence, anomaly seed.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="comparison-card">
+                                    <div class="comparison-icon">
+                                        <i class="bi bi-person-bounding-box"></i>
+                                    </div>
+                                    <h5>Algorithm B</h5>
+                                    <p class="small">
+                                        <strong>Best for:</strong> When pose is available; need interpretable activity labels and fall cues.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="comparison-card highlight">
+                                    <div class="comparison-icon">
+                                        <i class="bi bi-diagram-3-fill"></i>
+                                    </div>
+                                    <h5>Combine Both</h5>
+                                    <p class="small">
+                                        <strong>Optimal:</strong> Trigger pose pipeline only when motion is sustained to save compute.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-custom alert-success mt-5">
+                            <i class="bi bi-stars me-2"></i>
+                            <strong>Best Practice:</strong> Use Algorithm A as a lightweight motion detector, then activate Algorithm B only when sustained motion is detected. This hybrid approach maximizes efficiency while maintaining accuracy.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- References Section -->
+        <section id="references" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">References</h2>
+                        <div class="references-box">
+                            <ul class="reference-list">
+                                <li>
+                                    <strong>[3]</strong> Ravankar et al., 2023 -
+                                    <a href="bibliography.html#ravankar2023" target="_blank">
+                                        View in Bibliography <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <strong>[5]</strong> Ullah et al., 2025 -
+                                    <a href="bibliography.html#technologies2023" target="_blank">
+                                        View in Bibliography <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps Section -->
+        <section id="next-steps" class="py-5" style="background-color: #000000;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h2 class="mb-4 text-white">Next Steps</h2>
+                        <p class="lead text-white mb-5">
+                            Continue exploring how these algorithms are applied in real-world systems.
+                        </p>
+
+                        <div class="row g-3 justify-content-center">
+                            <div class="col-md-5">
+                                <a href="fall-detection.html" class="btn btn-light btn-lg w-100">
+                                    <i class="bi bi-arrow-right-circle me-2"></i>
+                                    Fall Detection Systems
+                                </a>
+                            </div>
+                            <div class="col-md-5">
+                                <a href="activity-recognition.html" class="btn btn-outline-light btn-lg w-100">
+                                    <i class="bi bi-arrow-left-circle me-2"></i>
+                                    Back to Techniques
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-4 bg-light border-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="text-muted mb-0">
+                            &copy; 2025 Computer Vision for Elderly Activity Recognition Tutorial
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Audio Player JS -->
+    <script src="audio-player.js"></script>
+</body>
+</html>

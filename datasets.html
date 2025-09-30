@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datasets for Elderly Activity Recognition & Fall Detection - CV for Elderly Care</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-eye-fill"></i> CV for Elderly Care
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border-color: #000;">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="introduction.html">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sensors.html">Sensors & Vision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="activity-recognition.html">Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="algorithms.html">Algorithms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fall-detection.html">Fall Detection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="challenges.html">Challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="datasets.html">Datasets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bibliography.html">Bibliography</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Audio Player and Reading Time -->
+    <div class="page-controls">
+        <button id="audioPlayerBtn" class="audio-player-btn" aria-label="Play audio narration">
+            <i id="playIcon" class="bi bi-play-fill"></i>
+            <i id="pauseIcon" class="bi bi-pause-fill" style="display: none;"></i>
+            <span>Listen</span>
+        </button>
+        <div class="read-time-badge" aria-label="Estimated reading time">
+            <i class="bi bi-clock-fill"></i>
+            <span>4 min read</span>
+        </div>
+    </div>
+    <audio id="pageAudio" class="page-audio" preload="metadata">
+        <source src="audio/Datasets.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Main Content -->
+    <main class="content-section">
+        <!-- Page Title -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h1 class="display-4 fw-bold mb-3">Datasets for Elderly Activity Recognition & Fall Detection</h1>
+                        <p class="lead text-muted">
+                            Essential datasets for training and evaluating computer vision models in elderly care.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Datasets Matter Section -->
+        <section id="why-datasets" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Why Datasets Matter</h2>
+                        
+                        <p class="lead mb-4">
+                            Robust activity recognition depends on representative, diverse datasets. For elderly monitoring, that means capturing daily living activities (ADLs) and rare but critical events like falls. Larger, well-annotated datasets improve generalization, reduce bias, and enable fair comparisons across methods.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Modalities Section -->
+        <section id="modalities" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Data Modalities</h2>
+
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6">
+                                <div class="modality-info-card">
+                                    <h5><i class="bi bi-camera-video-fill me-2"></i>RGB Video</h5>
+                                    <p>Rich detail, easy to deploy, but raises privacy concerns.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="modality-info-card">
+                                    <h5><i class="bi bi-grid-3x3-gap-fill me-2"></i>Depth</h5>
+                                    <p>Encodes distance; enables skeleton extraction and better privacy than RGB.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="modality-info-card">
+                                    <h5><i class="bi bi-thermometer-half me-2"></i>Infrared (IR)/Thermal</h5>
+                                    <p>Works in low light; silhouettes instead of identifiable faces.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="modality-info-card">
+                                    <h5><i class="bi bi-person-bounding-box me-2"></i>Skeleton (2D/3D keypoints)</h5>
+                                    <p>Compact, privacy-preserving representation of pose and motion.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="modality-info-card">
+                                    <h5><i class="bi bi-layers-fill me-2"></i>Multimodal</h5>
+                                    <p>Combinations (e.g., RGB + skeleton + IMU) improve robustness and reduce false alarms.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-custom alert-info">
+                            <i class="bi bi-info-circle-fill me-2"></i>
+                            See <a href="sensors.html">Sensors & Vision page</a> for modality trade-offs.
+                        </div>
+
+                        <!-- Modalities Image -->
+                        <div class="text-center my-5">
+                            <div class="image-container">
+                                <img src="assets/datasets-modalities.png" alt="Data Modalities Comparison - RGB vs. Depth vs. IR vs. Skeleton" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Datasets Section -->
+        <section id="key-datasets" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Key Datasets (What to Know & When to Use)</h2>
+
+                        <!-- Dataset 1: ETRI-Activity3D -->
+                        <div class="dataset-card">
+                            <div class="dataset-header">
+                                <span class="dataset-number">1</span>
+                                <h3>ETRI-Activity3D</h3>
+                                <span class="dataset-badge">Elderly-focused, home/robot view</span>
+                            </div>
+                            <div class="dataset-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Modalities:</strong> RGB video (+ depth & skeleton available)</p>
+                                        <p><strong>Scope:</strong> ~112,620 samples, 55 actions (ADLs oriented), recorded at ~20 FPS in home-like settings from robot-height cameras</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Use For:</strong> Elderly ADLs, realistic layouts, training deep models (CNN/GCN/LSTM)</p>
+                                        <p><strong>Notes:</strong> Excellent scale and realism for elder care; supports pose and privacy-aware pipelines.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dataset 2: UP-FALL -->
+                        <div class="dataset-card">
+                            <div class="dataset-header">
+                                <span class="dataset-number">2</span>
+                                <h3>UP-FALL</h3>
+                                <span class="dataset-badge">Falls + ADLs, balanced classes</span>
+                            </div>
+                            <div class="dataset-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Modalities:</strong> RGB video, IMU sensors (accelerometer/gyroscope), sometimes audio</p>
+                                        <p><strong>Scope:</strong> 5 fall types + 6 common activities</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Use For:</strong> Joint vision + wearable fusion, benchmarking fall vs. non-fall and everyday actions</p>
+                                        <p><strong>Notes:</strong> Great for multimodal fusion and evaluating false alarms.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dataset 3: URFD -->
+                        <div class="dataset-card">
+                            <div class="dataset-header">
+                                <span class="dataset-number">3</span>
+                                <h3>UR Fall Detection Dataset (URFD)</h3>
+                                <span class="dataset-badge">Classic fall dataset</span>
+                            </div>
+                            <div class="dataset-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Modalities:</strong> RGB video</p>
+                                        <p><strong>Scope:</strong> Staged falls and non-falls in controlled scenes</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Use For:</strong> Baseline benchmarking of traditional and deep methods</p>
+                                        <p><strong>Notes:</strong> Smaller/acted; useful for quick prototyping and pipeline sanity checks.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dataset 4: Le2i -->
+                        <div class="dataset-card">
+                            <div class="dataset-header">
+                                <span class="dataset-number">4</span>
+                                <h3>Le2i Fall Detection Dataset</h3>
+                                <span class="dataset-badge">Multiple indoor scenes</span>
+                            </div>
+                            <div class="dataset-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Modalities:</strong> RGB video from multiple indoor scenes (coffee room, home, office)</p>
+                                        <p><strong>Scope:</strong> Staged falls and daily activities in varied environments</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Use For:</strong> Testing generalization across rooms and camera angles</p>
+                                        <p><strong>Notes:</strong> Diversity of backgrounds is helpful for robustness studies.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dataset 5: NTU RGB+D -->
+                        <div class="dataset-card">
+                            <div class="dataset-header">
+                                <span class="dataset-number">5</span>
+                                <h3>NTU RGB+D / NTU RGB+D 120</h3>
+                                <span class="dataset-badge">Large-scale HAR, not elderly-specific</span>
+                            </div>
+                            <div class="dataset-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Modalities:</strong> RGB, Depth, 3D skeleton</p>
+                                        <p><strong>Scope:</strong> 60–120 action classes, many subjects and camera views</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Use For:</strong> Skeleton-based methods (GCN/LSTM), pretraining on large pose data</p>
+                                        <p><strong>Notes:</strong> Not elderly-focused, but excellent for pose models and transfer learning.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-custom alert-secondary mt-4">
+                            <i class="bi bi-info-circle-fill me-2"></i>
+                            <strong>Other helpful sets you may see:</strong> MMU Fall Detection, Charades (HAR), and various lab-collected ADLs.
+                        </div>
+
+                        <!-- Datasets Table Placeholder -->
+                        <div class="text-center my-5">
+                            <div class="image-container">
+                                <img src="assets/datasets-table.png" alt="Datasets Comparison Table - Side-by-side comparison of key features" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evaluation Protocols Section -->
+        <section id="evaluation" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Evaluation Protocols (How to Test Fairly)</h2>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="protocol-card">
+                                    <h5><i class="bi bi-shuffle me-2"></i>Train/Test Split</h5>
+                                    <p>Keep subjects disjoint to avoid identity leakage.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="protocol-card">
+                                    <h5><i class="bi bi-people-fill me-2"></i>Cross-Subject</h5>
+                                    <p>Train on one group, test on unseen people (more realistic).</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="protocol-card">
+                                    <h5><i class="bi bi-camera-fill me-2"></i>Cross-View / Cross-Scene</h5>
+                                    <p>Train on one view/room, test on another to assess robustness.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="protocol-card">
+                                    <h5><i class="bi bi-graph-up me-2"></i>Metrics</h5>
+                                    <p>Accuracy for balanced classes; F1-score, Precision/Recall, and ROC-AUC for imbalanced fall detection; Confusion Matrix to inspect false alarms vs. misses; Latency/FPS for real-time systems.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ethics & Privacy Section -->
+        <section id="ethics" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Ethics & Privacy</h2>
+
+                        <div class="ethics-box">
+                            <ul class="ethics-list">
+                                <li><i class="bi bi-shield-check me-2"></i>Prefer depth/IR or skeleton-only pipelines when possible.</li>
+                                <li><i class="bi bi-incognito me-2"></i>Anonymize faces/backgrounds or run inference on-device to avoid sending raw video to the cloud.</li>
+                                <li><i class="bi bi-file-earmark-check me-2"></i>Obtain informed consent; follow local data protection rules; minimize retention of raw identifiable footage.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-5" style="background-color: #000000;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h2 class="mb-4 text-white">Continue Learning</h2>
+                        <p class="lead text-white mb-4">
+                            Explore the bibliography for research papers or test your knowledge with the quiz.
+                        </p>
+                        <a href="bibliography.html" class="btn btn-light btn-lg me-3">
+                            View Bibliography <i class="bi bi-book"></i>
+                        </a>
+                        <a href="quiz.html" class="btn btn-outline-light btn-lg">
+                            Take the Quiz <i class="bi bi-question-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-white">About This Tutorial</h5>
+                    <p style="color: #cccccc;">
+                        A graduate-level interactive tutorial on computer vision applications for elderly care, focusing on activity recognition and fall detection systems.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none" style="color: #cccccc;">Home</a></li>
+                        <li><a href="introduction.html" class="text-decoration-none" style="color: #cccccc;">Introduction</a></li>
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">Bibliography</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">References</a></li>
+                        <li><a href="quiz.html" class="text-decoration-none" style="color: #cccccc;">Quiz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background-color: #666666; opacity: 1;">
+            <div class="text-center">
+                <p class="mb-0 text-white">&copy; 2025 Computer Vision for Elderly Care Tutorial. Educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Audio Player JS -->
+    <script src="audio-player.js"></script>
+</body>
+</html>
+

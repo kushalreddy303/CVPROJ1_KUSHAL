@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fall Detection Systems - CV for Elderly Care</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-eye-fill"></i> CV for Elderly Care
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border-color: #000;">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="introduction.html">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sensors.html">Sensors & Vision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="activity-recognition.html">Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="algorithms.html">Algorithms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="fall-detection.html">Fall Detection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="challenges.html">Challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="datasets.html">Datasets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bibliography.html">Bibliography</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Audio Player and Reading Time -->
+    <div class="page-controls">
+        <button id="audioPlayerBtn" class="audio-player-btn" aria-label="Play audio narration">
+            <i id="playIcon" class="bi bi-play-fill"></i>
+            <i id="pauseIcon" class="bi bi-pause-fill" style="display: none;"></i>
+            <span>Listen</span>
+        </button>
+        <div class="read-time-badge" aria-label="Estimated reading time">
+            <i class="bi bi-clock-fill"></i>
+            <span>5 min read</span>
+        </div>
+    </div>
+    <audio id="pageAudio" class="page-audio" preload="metadata">
+        <source src="audio/Fall Detection.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Main Content -->
+    <main class="content-section">
+        <!-- Page Title -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h1 class="display-4 fw-bold mb-3">Fall Detection Systems</h1>
+                        <p class="lead text-muted">
+                            The cornerstone of elderly monitoring: detecting falls before it's too late.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Falls Matter Section -->
+        <section id="why-falls" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Why Falls Matter</h2>
+                        
+                        <p class="lead mb-4">
+                            Falls are one of the leading causes of injury and death among the elderly. According to the World Health Organization, over <strong>37 million falls</strong> each year require medical attention, and more than <strong>680,000 deaths</strong> occur globally due to falls.
+                        </p>
+
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <div class="stat-card">
+                                    <div class="stat-number">37M+</div>
+                                    <h5>Falls Requiring Medical Attention</h5>
+                                    <p>Each year worldwide</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="stat-card">
+                                    <div class="stat-number">680K+</div>
+                                    <h5>Deaths from Falls</h5>
+                                    <p>Globally per year</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-custom alert-info">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <strong>Critical Insight:</strong> For elderly people living alone, unattended falls can be fatal. This is why fall detection is often considered the <strong>most critical task</strong> in computer vision–based elderly monitoring <a href="bibliography.html#sensors2024">[4]</a>.
+                        </div>
+
+                        <!-- Fall Sequence Image -->
+                        <div class="text-center my-5">
+                            <div class="image-container">
+                                <img src="assets/fall-sequence.png" alt="Fall Sequence Timeline - Standing → Losing Balance → Falling → Impact" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Approaches to Fall Detection Section -->
+        <section id="approaches" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-5">Approaches to Fall Detection</h2>
+
+                        <!-- Wearable Sensors -->
+                        <div class="approach-section mb-5">
+                            <div class="approach-header">
+                                <span class="approach-number">1</span>
+                                <h3>Wearable Sensors (Traditional)</h3>
+                            </div>
+                            <div class="approach-content">
+                                <p class="mb-3">Devices like accelerometers and gyroscopes detect sudden movement and immobility.</p>
+                                <div class="limitations-box">
+                                    <h6><i class="bi bi-x-circle-fill me-2"></i>Limitations:</h6>
+                                    <ul>
+                                        <li>Require the user to remember to wear them</li>
+                                        <li>Battery constraints</li>
+                                        <li>Discomfort and stigma</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vision-Based Approaches -->
+                        <div class="approach-section mb-5">
+                            <div class="approach-header">
+                                <span class="approach-number">2</span>
+                                <h3>Vision-Based Approaches (Modern)</h3>
+                            </div>
+                            <div class="approach-content">
+                                <p class="lead mb-4">Vision systems analyze video streams to detect falls automatically. These include:</p>
+
+                                <!-- Posture-Based Methods -->
+                                <div class="method-card mb-4">
+                                    <h4><i class="bi bi-person-standing me-2"></i>Posture-Based Methods</h4>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i>Track body landmarks (e.g., head, hips, knees)</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i>If the body shifts from vertical to horizontal rapidly, it may indicate a fall <a href="bibliography.html#ravankar2023">[2]</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- Motion Analysis -->
+                                <div class="method-card mb-4">
+                                    <h4><i class="bi bi-activity me-2"></i>Motion Analysis</h4>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i>Use optical flow or temporal models to detect sudden changes in movement</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Deep Learning Models -->
+                                <div class="method-card mb-4">
+                                    <h4><i class="bi bi-cpu-fill me-2"></i>Deep Learning Models</h4>
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle me-2"></i><strong>CNNs</strong> analyze video frames to distinguish between lying down vs. falling</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i><strong>LSTMs</strong> capture the sequence of movements leading up to a fall</li>
+                                        <li><i class="bi bi-check2-circle me-2"></i><strong>GCNs</strong> interpret skeleton graphs for more robust recognition <a href="bibliography.html#sensors2024">[4]</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- Fall Skeleton Image -->
+                                <div class="text-center my-4">
+                                    <div class="image-container">
+                                        <img src="assets/fall-skeleton.png" alt="Posture Shift Detection - Skeleton overlay: Vertical → Horizontal posture change" class="img-fluid rounded shadow">
+                                        <div class="ai-generated-label">AI GENERATED</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Successes Section -->
+        <section id="successes" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Successes</h2>
+
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="success-card">
+                                    <div class="success-icon">
+                                        <i class="bi bi-trophy-fill"></i>
+                                    </div>
+                                    <h5>High Accuracy</h5>
+                                    <p>Vision-based systems can reach accuracy <strong>above 95%</strong> in controlled environments <a href="bibliography.html#gaikwad2023">[1]</a>.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="success-card">
+                                    <div class="success-icon">
+                                        <i class="bi bi-layers-fill"></i>
+                                    </div>
+                                    <h5>Ensemble Methods</h5>
+                                    <p>Combining Random Forests, SVM, and CNNs achieve nearly <strong>99% accuracy</strong> in fall vs. non-fall classification.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="success-card">
+                                    <div class="success-icon">
+                                        <i class="bi bi-shield-check"></i>
+                                    </div>
+                                    <h5>Privacy Preservation</h5>
+                                    <p>Depth or infrared cameras help preserve privacy while maintaining reliability <a href="bibliography.html#technologies2023">[3]</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Failures & Challenges Section -->
+        <section id="failures" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Failures & Challenges</h2>
+                        
+                        <p class="lead mb-4">Despite successes, fall detection is not foolproof:</p>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="challenge-card">
+                                    <i class="bi bi-exclamation-triangle-fill mb-3" style="font-size: 2rem;"></i>
+                                    <h5>Transitions Cause Errors</h5>
+                                    <p>Lying down on a bed vs. actually falling can be confused <a href="bibliography.html#ravankar2023">[2]</a>.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="challenge-card">
+                                    <i class="bi bi-eye-slash-fill mb-3" style="font-size: 2rem;"></i>
+                                    <h5>Occlusions</h5>
+                                    <p>Furniture or poor camera angles can block detection.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="challenge-card">
+                                    <i class="bi bi-database-fill-x mb-3" style="font-size: 2rem;"></i>
+                                    <h5>Dataset Limitations</h5>
+                                    <p>Real fall data is rare (most datasets are acted, not natural).</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="challenge-card">
+                                    <i class="bi bi-bell-fill mb-3" style="font-size: 2rem;"></i>
+                                    <h5>False Alarms</h5>
+                                    <p>Sudden sitting or bending may be misclassified as a fall.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real-World Deployment Section -->
+        <section id="deployment" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 class="mb-4">Real-World Deployment</h2>
+                        
+                        <p class="lead mb-5">Researchers are moving toward smart home integration:</p>
+
+                        <!-- Fall Detection Pipeline Image -->
+                        <div class="text-center mb-5">
+                            <div class="image-container">
+                                <img src="assets/fall-pipeline.png" alt="Fall Detection Pipeline - Camera → Pose Estimation → Classifier → Alarm" class="img-fluid rounded shadow">
+                                <div class="ai-generated-label">AI GENERATED</div>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="deployment-card">
+                                    <div class="deployment-icon">
+                                        <i class="bi bi-house-fill"></i>
+                                    </div>
+                                    <h5>Smart Home Integration</h5>
+                                    <p>Cameras + AI trigger alarms to caregivers or medical staff.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="deployment-card">
+                                    <div class="deployment-icon">
+                                        <i class="bi bi-incognito"></i>
+                                    </div>
+                                    <h5>Privacy-Preserving</h5>
+                                    <p>Using skeleton data, anonymized silhouettes, or infrared imaging.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="deployment-card">
+                                    <div class="deployment-icon">
+                                        <i class="bi bi-lightning-charge-fill"></i>
+                                    </div>
+                                    <h5>Edge Devices</h5>
+                                    <p>Jetson Nano allows real-time fall detection at low power <a href="bibliography.html#gaikwad2023">[1]</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Takeaway Section -->
+        <section id="takeaway" class="py-5" style="background-color: #000000;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h2 class="mb-4 text-white">Key Takeaway</h2>
+                        <p class="lead text-white mb-5">
+                            Fall detection is the <strong>cornerstone of elderly monitoring systems</strong>. While current AI techniques show high accuracy in lab conditions, challenges remain in real-world environments. The future lies in <strong>privacy-aware, real-time systems</strong> that balance accuracy, comfort, and trust.
+                        </p>
+
+                        <div class="mt-5">
+                            <a href="challenges.html" class="btn btn-light btn-lg">
+                                Next: Challenges <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-white">About This Tutorial</h5>
+                    <p style="color: #cccccc;">
+                        A graduate-level interactive tutorial on computer vision applications for elderly care, focusing on activity recognition and fall detection systems.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none" style="color: #cccccc;">Home</a></li>
+                        <li><a href="introduction.html" class="text-decoration-none" style="color: #cccccc;">Introduction</a></li>
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">Bibliography</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bibliography.html" class="text-decoration-none" style="color: #cccccc;">References</a></li>
+                        <li><a href="quiz.html" class="text-decoration-none" style="color: #cccccc;">Quiz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background-color: #666666; opacity: 1;">
+            <div class="text-center">
+                <p class="mb-0 text-white">&copy; 2025 Computer Vision for Elderly Care Tutorial. Educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Audio Player JS -->
+    <script src="audio-player.js"></script>
+</body>
+</html>
+
